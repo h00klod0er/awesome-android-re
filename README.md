@@ -5,7 +5,7 @@
 > 范围：APK/DEX 静态分析、动态插桩、Root/注入框架、Frida 脚本与 Gadget、Android RE MCP、学习资源。  
 > 不含：盗版激活、黑产打包器、与逆向无关的通用开发框架。
 
-> **统计说明（2026-09-21 11:33 UTC）**：`★` = GitHub Stars；`更新` = 仓库最近一次 `pushed_at`（推送）日期。由 [GitHub Actions](.github/workflows/update-stats.yml) 每周一自动刷新；也可手动 `workflow_dispatch`。PyPI-only 包无独立 star，会注明对应源码仓。
+> **统计说明（2026-09-21 11:34 UTC）**：`★` = GitHub Stars；`更新` = 仓库最近一次 `pushed_at`（推送）日期。由 [GitHub Actions](.github/workflows/update-stats.yml) 每周一自动刷新；也可手动 `workflow_dispatch`。PyPI-only 包无独立 star，会注明对应源码仓。
 
 ## 目录
 
