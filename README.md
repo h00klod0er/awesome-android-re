@@ -5,7 +5,7 @@
 > 范围：APK/DEX 静态分析、动态插桩、Root/注入框架、Frida 脚本与 Gadget、Android RE MCP、学习资源。  
 > 不含：盗版激活、黑产打包器、与逆向无关的通用开发框架。
 
-> **统计说明（2026-09-21 11:36 UTC）**：`★` = GitHub Stars；`更新` = 仓库最近一次 `pushed_at`（推送）日期。由 [GitHub Actions](.github/workflows/update-stats.yml) 每周一自动刷新；也可手动 `workflow_dispatch`。PyPI-only 包无独立 star，会注明对应源码仓。
+> **统计说明（2026-09-21 11:44 UTC）**：`★` = GitHub Stars；`更新` = 仓库最近一次 `pushed_at`（推送）日期。由 [GitHub Actions](.github/workflows/update-stats.yml) 每周一自动刷新；也可手动 `workflow_dispatch`。PyPI-only 包无独立 star，会注明对应源码仓。
 
 ## 目录
 
@@ -15,6 +15,8 @@
 - [动态分析 · Frida / 运行时](#动态分析--frida--运行时)
 - [脚本集 · Frida Snippets](#脚本集--frida-snippets)
 - [魔改 Frida · 反检测 server](#魔改-frida--反检测-server)
+- [Codeshare · 脚本镜像合集](#codeshare--脚本镜像合集)
+- [对抗专项 · Unpin / Flutter / 通用 Bypass](#对抗专项--unpin--flutter--通用-bypass)
 - [Root · 注入 · Gadget（增强组件）](#root--注入--gadget增强组件)
 - [学习资源](#学习资源)
 - [相关清单](#相关清单)
@@ -125,7 +127,8 @@ Python 安卓分析库：DEX/APK 解析、控制流、脚本化审计。
 
 ## 脚本集 · Frida Snippets
 
-> 优先收录 **star 高、近两年仍有推送** 的脚本集 / 工具包。通用脚本仓库 + 专项（unpin / DEX dump / IL2CPP / JNI）。
+> 优先收录 **star 高、近两年仍有推送** 的通用脚本集 / 工具包（DEX dump、IL2CPP、综合 hook）。
+> Codeshare 镜像与 Unpin/Flutter/Bypass 专项见下方独立章节。
 
 | 项目 | ★ | 更新 | 说明 | 备注 |
 |------|--:|------|------|------|
@@ -134,15 +137,11 @@ Python 安卓分析库：DEX/APK 解析、控制流、脚本化审计。
 | [dweinstein/awesome-frida](https://github.com/dweinstein/awesome-frida) | 3,531| 2026-04-10| Awesome Frida 资源清单 | 上游索引 |
 | [Ch0pin/medusa](https://github.com/Ch0pin/medusa) | 2,344| 2026-09-06| 模块化动态分析框架（大量可组合 Frida 脚本） | Edge-Dynamic 分析 |
 | [iddoeldor/frida-snippets](https://github.com/iddoeldor/frida-snippets) | 2,535| 2024-11-29| 手写 Frida 示例集 | 入门/速查 |
-| [httptoolkit/frida-interception-and-unpinning](https://github.com/httptoolkit/frida-interception-and-unpinning) | 2,300| 2026-09-18| HTTPS 拦截 + 证书固定绕过 | 配 HTTP Toolkit，持续更新 |
 | [vfsfitvnm/frida-il2cpp-bridge](https://github.com/vfsfitvnm/frida-il2cpp-bridge) | 1,747| 2026-09-06| IL2CPP dump / trace / hijack（可不依赖 global-metadata.dat） | Unity 向 |
 | [Perfare/Zygisk-Il2CppDumper](https://github.com/Perfare/Zygisk-Il2CppDumper) | 3,296| 2024-08-09| Zygisk 运行时 dump IL2CPP | Root 场景 |
 | [interference-security/frida-scripts](https://github.com/interference-security/frida-scripts) | 662| 2022-09-26| 通用 Frida Scripts 合集 | 经典合集 |
 | [Areizen/JNI-Frida-Hook](https://github.com/Areizen/JNI-Frida-Hook) | 645| 2023-08-03| 快速 hook JNI Native | Native 层 |
 | [cryptax/androidre](https://github.com/cryptax/androidre) | 607| 2026-05-03| 安卓逆向笔记与脚本 | 教学向 |
-| [zengfr/frida-codeshare-scripts](https://github.com/zengfr/frida-codeshare-scripts) | 115| 2026-03-12| codeshare 实用脚本同步合集 | 中文社区维护 |
-| [bigsinger/awesomeFrida](https://github.com/bigsinger/awesomeFrida) | 119| 2026-05-21| frida 代码汇总 | 中文索引 |
-| [d0gkiller87/Frida-libcurlUnpinning](https://github.com/d0gkiller87/Frida-libcurlUnpinning) | 40| 2026-08-16| libcurl（NDK）SSL Pinning 绕过 | Native 网络栈 |
 
 ---
 
@@ -165,6 +164,45 @@ Python 安卓分析库：DEX/APK 解析、控制流、脚本化审计。
 ---
 
 
+
+## Codeshare · 脚本镜像合集
+
+> [Frida CodeShare](https://codeshare.frida.re/) 官方站点脚本的镜像 / 同步仓、以及「把流行脚本打包成一箱」的合集。适合当速查库；质量参差，用前自己审一眼。
+
+| 项目 | ★ | 更新 | 说明 | 备注 |
+|------|--:|------|------|------|
+| [hookmaster/frida-all-in-one](https://github.com/hookmaster/frida-all-in-one) | 3,147| 2019-11-04| 《FRIDA 操作手册》资料合集（hluwa / r0ysue 系） | 中文入门史料 |
+| [0xdea/frida-scripts](https://github.com/0xdea/frida-scripts) | 1,661| 2026-08-02| 作者自维护的 Frida 插桩脚本集 | 持续更新 |
+| [deathmemory/FridaContainer](https://github.com/deathmemory/FridaContainer) | 1,515| 2025-11-13| 常用 Frida 脚本整合容器 | 中文社区高星合集 |
+| [zengfr/frida-codeshare-scripts](https://github.com/zengfr/frida-codeshare-scripts) | 115| 2026-03-12| codeshare 实用脚本同步 | 偏全量镜像 |
+| [hyugogirubato/Frida-CodeShare](https://github.com/hyugogirubato/Frida-CodeShare) | 80| 2026-02-08| CodeShare 向脚本整理 | 拦截/改行为类 |
+| [frida/frida-codeshare](https://github.com/frida/frida-codeshare) | 23| 2026-05-18| Frida 官方 codeshare 相关仓 | 官方侧 |
+| [konsumer/frida-codeshare](https://github.com/konsumer/frida-codeshare) | 1| 2024-08-02| codeshare 可搜索镜像 | 镜像工具 |
+
+站点入口：[codeshare.frida.re](https://codeshare.frida.re/)（网页检索，不占用本表 ★）。
+
+---
+
+## 对抗专项 · Unpin / Flutter / 通用 Bypass
+
+> 「厂商/加固对抗」在开源侧多体现为：**SSL Pinning 绕过、Flutter TLS、Root/模拟器/完整性检测绕过、Burp↔Frida 桥**。下面按专项收；**仅用于授权测试**。单一 App（某银行/某社交）的私仓样本一般不收录。
+
+| 项目 | ★ | 更新 | 说明 | 备注 |
+|------|--:|------|------|------|
+| [Fuzion24/JustTrustMe](https://github.com/Fuzion24/JustTrustMe) | 5,364| 2024-09-02| Xposed 关证书校验（非 Frida，但安卓 MitM 经典） | SSL 专项 |
+| [ax/apk.sh](https://github.com/ax/apk.sh) | 3,834| 2026-01-26| 解码/回编/重签流水线自动化 | 改包前置 |
+| [Impact-I/reFlutter](https://github.com/Impact-I/reFlutter) | 2,759| 2026-08-11| Flutter 逆向框架 | Flutter 专项 |
+| [httptoolkit/frida-interception-and-unpinning](https://github.com/httptoolkit/frida-interception-and-unpinning) | 2,300| 2026-09-18| 运行时改写 + HTTPS unpin | 网络拦截 |
+| [federicodotta/Brida](https://github.com/federicodotta/Brida) | 1,896| 2025-10-30| Burp Suite ↔ Frida 桥 | 抓包联动 |
+| [chame1eon/jnitrace](https://github.com/chame1eon/jnitrace) | 1,861| 2023-07-18| JNI API 调用追踪 | Native 专项 |
+| [ptswarm/reFlutter](https://github.com/ptswarm/reFlutter) | 1,461| 2022-04-11| reFlutter 早期公开仓 | Flutter 史料 |
+| [NVISOsecurity/disable-flutter-tls-verification](https://github.com/NVISOsecurity/disable-flutter-tls-verification) | 677| 2026-06-17| 关闭 Flutter TLS 校验的 Frida 脚本 | Flutter unpin |
+| [ReversecLabs/android-keystore-audit](https://github.com/ReversecLabs/android-keystore-audit) | 477| 2025-07-17| Android Keystore 审计相关 | 密钥/证书向 |
+| [okankurtuluss/FridaBypassKit](https://github.com/okankurtuluss/FridaBypassKit) | 162| 2025-06-12| 通用 Root / SSL Pinning / 检测绕过套件 | 综合 Bypass |
+| [yohanes/zygisk-reflutter](https://github.com/yohanes/zygisk-reflutter) | 143| 2025-05-10| Zygisk 版 reFlutter | Flutter + Root |
+| [CYRUS-STUDIO/frida-ssl-pinning-bypass](https://github.com/CYRUS-STUDIO/frida-ssl-pinning-bypass) | 80 | 2026-04-26| Java + Native 通用 SSL Pinning 绕过 | unpin 脚本 |
+
+---
 ## Root · 注入 · Gadget（增强组件）
 
 > 社区常说的「武器/改良」多指：开机自启 Frida、Zygisk 注入 Gadget、免 Root 补丁框架等——**仅用于你有权测试的应用与设备**。
