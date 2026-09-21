@@ -5,7 +5,7 @@
 > 范围：APK/DEX 静态分析、动态插桩、Root/注入框架、Frida 脚本与 Gadget、Android RE MCP、学习资源。  
 > 不含：盗版激活、黑产打包器、与逆向无关的通用开发框架。
 
-> **统计说明（2026-09-21 11:34 UTC）**：`★` = GitHub Stars；`更新` = 仓库最近一次 `pushed_at`（推送）日期。由 [GitHub Actions](.github/workflows/update-stats.yml) 每周一自动刷新；也可手动 `workflow_dispatch`。PyPI-only 包无独立 star，会注明对应源码仓。
+> **统计说明（2026-09-21 11:36 UTC）**：`★` = GitHub Stars；`更新` = 仓库最近一次 `pushed_at`（推送）日期。由 [GitHub Actions](.github/workflows/update-stats.yml) 每周一自动刷新；也可手动 `workflow_dispatch`。PyPI-only 包无独立 star，会注明对应源码仓。
 
 ## 目录
 
@@ -14,6 +14,7 @@
 - [静态分析](#静态分析)
 - [动态分析 · Frida / 运行时](#动态分析--frida--运行时)
 - [脚本集 · Frida Snippets](#脚本集--frida-snippets)
+- [魔改 Frida · 反检测 server](#魔改-frida--反检测-server)
 - [Root · 注入 · Gadget（增强组件）](#root--注入--gadget增强组件)
 - [学习资源](#学习资源)
 - [相关清单](#相关清单)
@@ -124,14 +125,45 @@ Python 安卓分析库：DEX/APK 解析、控制流、脚本化审计。
 
 ## 脚本集 · Frida Snippets
 
+> 优先收录 **star 高、近两年仍有推送** 的脚本集 / 工具包。通用脚本仓库 + 专项（unpin / DEX dump / IL2CPP / JNI）。
+
 | 项目 | ★ | 更新 | 说明 | 备注 |
 |------|--:|------|------|------|
+| [CreditTone/hooker](https://github.com/CreditTone/hooker) | 5,311| 2026-09-11| Frida 安卓逆向工具包：CLI、通用脚本、自动 hook、内存漫游、SOCKS5、JustTrustMe / BoringSSL unpin | 综合脚本工具首选之一 |
+| [hluwa/frida-dexdump](https://github.com/hluwa/frida-dexdump) | 4,559| 2023-03-04| 内存 DEX dump | 脱壳辅助经典 |
+| [dweinstein/awesome-frida](https://github.com/dweinstein/awesome-frida) | 3,531| 2026-04-10| Awesome Frida 资源清单 | 上游索引 |
+| [Ch0pin/medusa](https://github.com/Ch0pin/medusa) | 2,344| 2026-09-06| 模块化动态分析框架（大量可组合 Frida 脚本） | Edge-Dynamic 分析 |
 | [iddoeldor/frida-snippets](https://github.com/iddoeldor/frida-snippets) | 2,535| 2024-11-29| 手写 Frida 示例集 | 入门/速查 |
-| [httptoolkit/frida-interception-and-unpinning](https://github.com/httptoolkit/frida-interception-and-unpinning) | 2,300| 2026-09-18| 拦截与证书固定绕过脚本 | 配 HTTP Toolkit |
+| [httptoolkit/frida-interception-and-unpinning](https://github.com/httptoolkit/frida-interception-and-unpinning) | 2,300| 2026-09-18| HTTPS 拦截 + 证书固定绕过 | 配 HTTP Toolkit，持续更新 |
+| [vfsfitvnm/frida-il2cpp-bridge](https://github.com/vfsfitvnm/frida-il2cpp-bridge) | 1,747| 2026-09-06| IL2CPP dump / trace / hijack（可不依赖 global-metadata.dat） | Unity 向 |
+| [Perfare/Zygisk-Il2CppDumper](https://github.com/Perfare/Zygisk-Il2CppDumper) | 3,296| 2024-08-09| Zygisk 运行时 dump IL2CPP | Root 场景 |
+| [interference-security/frida-scripts](https://github.com/interference-security/frida-scripts) | 662| 2022-09-26| 通用 Frida Scripts 合集 | 经典合集 |
 | [Areizen/JNI-Frida-Hook](https://github.com/Areizen/JNI-Frida-Hook) | 645| 2023-08-03| 快速 hook JNI Native | Native 层 |
 | [cryptax/androidre](https://github.com/cryptax/androidre) | 607| 2026-05-03| 安卓逆向笔记与脚本 | 教学向 |
+| [zengfr/frida-codeshare-scripts](https://github.com/zengfr/frida-codeshare-scripts) | 115| 2026-03-12| codeshare 实用脚本同步合集 | 中文社区维护 |
+| [bigsinger/awesomeFrida](https://github.com/bigsinger/awesomeFrida) | 119| 2026-05-21| frida 代码汇总 | 中文索引 |
+| [d0gkiller87/Frida-libcurlUnpinning](https://github.com/d0gkiller87/Frida-libcurlUnpinning) | 40| 2026-08-16| libcurl（NDK）SSL Pinning 绕过 | Native 网络栈 |
 
 ---
+
+## 魔改 Frida · 反检测 server
+
+> 社区俗称「魔改 Frida」：改过特征的 `frida-server` / Gadget，用于降低常见反 Frida 检测命中率。**仅用于你有权测试的环境**；与官方 [frida/frida](https://github.com/frida/frida) 发行版并存时注意版本对齐。
+
+| 项目 | ★ | 更新 | 说明 | 备注 |
+|------|--:|------|------|------|
+| [Ylarod/Florida](https://github.com/Ylarod/Florida) | 2,216| 2026-09-09| 基础反检测 frida-server | 近年活跃魔改线 |
+| [hzzheyang/strongR-frida-android](https://github.com/hzzheyang/strongR-frida-android) | 1,690| 2026-09-09| strongR 系 Android 反检测 frida-server | 高 star、持续更新 |
+| [CrackerCat/strongR-frida-android](https://github.com/CrackerCat/strongR-frida-android) | 707| 2025-04-14| strongR-frida-android 分支/镜像 | 同源系 |
+| [Exo1i/MagiskHluda](https://github.com/Exo1i/MagiskHluda) | 432| 2026-02-04| Magisk 开机跑更难检测的 frida-server（Hluda 向） | Magisk + 魔改 |
+| [hluwa/Patchs](https://github.com/hluwa/Patchs) | 227| 2021-08-16| strongR-frida 相关补丁史料 | 早期资料 |
+| [ViRb3/magisk-frida](https://github.com/ViRb3/magisk-frida) | 1,455| 2026-09-09| Magisk 开机拉官方/自选 frida-server | 常驻插桩底座 |
+| [lico-n/ZygiskFrida](https://github.com/lico-n/ZygiskFrida) | 1,085| 2025-10-18| Zygisk 注入 Frida Gadget | 对抗部分完整性检测 |
+| [March7-code/ZygiskInject](https://github.com/March7-code/ZygiskInject) | 21| 2026-04-09| 基于 ZygiskFrida 的行为分析/注入器 | 衍生改造 |
+| [AeonLucid/MagiskFrida](https://github.com/AeonLucid/MagiskFrida) | 222| 2023-05-22| 早期 Magisk 跑 frida-server | 历史方案 |
+
+---
+
 
 ## Root · 注入 · Gadget（增强组件）
 
